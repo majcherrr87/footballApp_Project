@@ -3,18 +3,18 @@ import { useApi } from '../hooks/useApi'
 import { Game } from '../types'
 
 export const useGetGamesQuery = () => {
-    const { apiGet } = useApi()
+  const { apiGet } = useApi()
 
-    const { data, isLoading, error } = useQuery({
-        queryKey: ['games'],
-        queryFn: async () => {
-            return apiGet<Game[]>('games')
-        },
-    })
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['games'],
+    queryFn: async () => {
+      return apiGet<Game[]>('games')
+    },
+  })
 
-    return {
-        data,
-        isLoading,
-        error,
-    }
+  return {
+    data,
+    isLoading,
+    error,
+  }
 }

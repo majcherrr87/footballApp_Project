@@ -7,54 +7,50 @@ import Chart from './components/Chart'
 import { TopThreeteams } from './components/TopThreeTeams'
 
 const StyledWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `
 
 export const Stats = () => {
-    const { data, isLoading, error } = useGetCompetitionsQuery()
+  const { data, isLoading, error } = useGetCompetitionsQuery()
 
-    const getLastGame = () => {
-        const lastGame = data?.sort(
-            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-        )[0]
+  const getLastGame = () => {
+    const lastGame = data?.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+    )[0]
 
-        return lastGame
-    }
+    return lastGame
+  }
 
-    const lastGame = getLastGame()
+  const lastGame = getLastGame()
 
-    if (isLoading) {
-        return <div>Loading...</div>
-    }
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
 
-    if (error || !data) {
-        return <div>Error</div>
-    }
+  if (error || !data) {
+    return <div>Error</div>
+  }
 
-    const render = () => {
-        return (
-            <Fragment>
-                {lastGame ? (
-                    <LastGame lastGame={lastGame} />
-                ) : (
-                    'Last game not found'
-                )}
-
-                <Chart />
-
-                <TopThreeteams />
-            </Fragment>
-        )
-    }
-
+  const render = () => {
     return (
-        <StyledWrapper>
-            <Header level={1}>Stats</Header>
+      <Fragment>
+        {lastGame ? <LastGame lastGame={lastGame} /> : 'Last game not found'}
 
-            {render()}
-        </StyledWrapper>
+        <Chart />
+
+        <TopThreeteams />
+      </Fragment>
     )
+  }
+
+  return (
+    <StyledWrapper>
+      <Header level={1}>Stats</Header>
+
+      {render()}
+    </StyledWrapper>
+  )
 }
