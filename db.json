@@ -1,0 +1,680 @@
+{
+  "players": [
+    {
+      "id": "dd23",
+      "firstName": "Kaz",
+      "lastName": "Bałagane",
+      "teamId": "2",
+      "teamName": "Real Madrid"
+    },
+    {
+      "id": "2a",
+      "firstName": "Marek",
+      "lastName": "Kowalski",
+      "teamId": "2",
+      "teamName": "Real Madrid"
+    },
+    {
+      "id": "2b",
+      "firstName": "Jacek",
+      "lastName": "Nowak",
+      "teamId": "2",
+      "teamName": "Real Madrid"
+    },
+    {
+      "id": "2c",
+      "firstName": "Adam",
+      "lastName": "Lewandowski",
+      "teamId": "2",
+      "teamName": "Real Madrid"
+    },
+    {
+      "id": "2d",
+      "firstName": "Piotr",
+      "lastName": "Zieliński",
+      "teamId": "2",
+      "teamName": "Real Madrid"
+    },
+    {
+      "id": "2e",
+      "firstName": "Sebastian",
+      "lastName": "Kwiatkowski",
+      "teamId": "2",
+      "teamName": "Real Madrid"
+    },
+    {
+      "id": "2f",
+      "firstName": "Kamil",
+      "lastName": "Wiśniewski",
+      "teamId": "2",
+      "teamName": "Real Madrid"
+    },
+    {
+      "id": "2g",
+      "firstName": "Łukasz",
+      "lastName": "Jabłoński",
+      "teamId": "2",
+      "teamName": "Real Madrid"
+    },
+    {
+      "id": "2h",
+      "firstName": "Wojciech",
+      "lastName": "Szymański",
+      "teamId": "2",
+      "teamName": "Real Madrid"
+    },
+    {
+      "id": "2i",
+      "firstName": "Grzegorz",
+      "lastName": "Malinowski",
+      "teamId": "2",
+      "teamName": "Real Madrid"
+    },
+    {
+      "id": "2j",
+      "firstName": "Damian",
+      "lastName": "Tomaszewski",
+      "teamId": "2",
+      "teamName": "Real Madrid"
+    },
+    {
+      "id": "3a",
+      "firstName": "Marek",
+      "lastName": "Kowalski",
+      "teamId": "3",
+      "teamName": "Legia Warszawa"
+    },
+    {
+      "id": "3b",
+      "firstName": "Jacek",
+      "lastName": "Nowak",
+      "teamId": "3",
+      "teamName": "Legia Warszawa"
+    },
+    {
+      "id": "3c",
+      "firstName": "Adam",
+      "lastName": "Lewandowski",
+      "teamId": "3",
+      "teamName": "Legia Warszawa"
+    },
+    {
+      "id": "3d",
+      "firstName": "Piotr",
+      "lastName": "Zieliński",
+      "teamId": "3",
+      "teamName": "Legia Warszawa"
+    },
+    {
+      "id": "3e",
+      "firstName": "Sebastian",
+      "lastName": "Kwiatkowski",
+      "teamId": "3",
+      "teamName": "Legia Warszawa"
+    },
+    {
+      "id": "3f",
+      "firstName": "Kamil",
+      "lastName": "Wiśniewski",
+      "teamId": "3",
+      "teamName": "Legia Warszawa"
+    },
+    {
+      "id": "3g",
+      "firstName": "Łukasz",
+      "lastName": "Jabłoński",
+      "teamId": "3",
+      "teamName": "Legia Warszawa"
+    },
+    {
+      "id": "3h",
+      "firstName": "Wojciech",
+      "lastName": "Szymański",
+      "teamId": "3",
+      "teamName": "Legia Warszawa"
+    },
+    {
+      "id": "3i",
+      "firstName": "Grzegorz",
+      "lastName": "Malinowski",
+      "teamId": "3",
+      "teamName": "Legia Warszawa"
+    },
+    {
+      "id": "3j",
+      "firstName": "Damian",
+      "lastName": "Tomaszewski",
+      "teamId": "3",
+      "teamName": "Legia Warszawa"
+    },
+    {
+      "id": "8ce5",
+      "firstName": "Kazior",
+      "lastName": "Bałaganiarz",
+      "teamId": "2",
+      "teamName": "Real Madrid"
+    },
+    {
+      "id": "bc7b",
+      "firstName": "Tomasz",
+      "lastName": "Kupisz",
+      "teamId": "2",
+      "teamName": "Real Madrid"
+    },
+    {
+      "id": "69bb",
+      "firstName": "Kazior",
+      "lastName": "Gołąb",
+      "teamId": "1",
+      "teamName": "FC Barcelona"
+    },
+    {
+      "id": "c14b",
+      "firstName": "Marek",
+      "lastName": "Kowalski",
+      "teamId": "4",
+      "teamName": "Lech Poznań"
+    },
+    {
+      "id": "c14c",
+      "firstName": "Jacek",
+      "lastName": "Nowak",
+      "teamId": "4",
+      "teamName": "Lech Poznań"
+    },
+    {
+      "id": "c14d",
+      "firstName": "Adam",
+      "lastName": "Lewandowski",
+      "teamId": "4",
+      "teamName": "Lech Poznań"
+    },
+    {
+      "id": "c14e",
+      "firstName": "Piotr",
+      "lastName": "Zieliński",
+      "teamId": "4",
+      "teamName": "Lech Poznań"
+    },
+    {
+      "id": "c14f",
+      "firstName": "Sebastian",
+      "lastName": "Kwiatkowski",
+      "teamId": "4",
+      "teamName": "Lech Poznań"
+    },
+    {
+      "id": "c14g",
+      "firstName": "Kamil",
+      "lastName": "Wiśniewski",
+      "teamId": "4",
+      "teamName": "Lech Poznań"
+    },
+    {
+      "id": "c14h",
+      "firstName": "Łukasz",
+      "lastName": "Jabłoński",
+      "teamId": "4",
+      "teamName": "Lech Poznań"
+    },
+    {
+      "id": "c14i",
+      "firstName": "Wojciech",
+      "lastName": "Szymański",
+      "teamId": "4",
+      "teamName": "Lech Poznań"
+    },
+    {
+      "id": "c14j",
+      "firstName": "Grzegorz",
+      "lastName": "Malinowski",
+      "teamId": "4",
+      "teamName": "Lech Poznań"
+    },
+    {
+      "id": "c14k",
+      "firstName": "Damian",
+      "lastName": "Tomaszewski",
+      "teamId": "4",
+      "teamName": "Lech Poznań"
+    },
+    {
+      "id": "2b25",
+      "firstName": "Kazior",
+      "lastName": "Gołąb",
+      "teamId": "2",
+      "teamName": "Real Madrid"
+    },
+    {
+      "id": "b3db",
+      "firstName": "Kazior",
+      "lastName": "Gołąb",
+      "teamId": "2",
+      "teamName": "Real Madrid"
+    },
+    {
+      "id": "df39",
+      "firstName": "Kazior",
+      "lastName": "Gołąb",
+      "teamId": "1",
+      "teamName": "FC Barcelona"
+    },
+    {
+      "id": "8427",
+      "firstName": "Tomasz",
+      "lastName": "Gołąb",
+      "teamId": "1",
+      "teamName": "FC Barcelona"
+    },
+    {
+      "id": "c14a",
+      "firstName": "Tomasz",
+      "lastName": "Gołąb",
+      "teamId": "4",
+      "teamName": "Lech Poznań"
+    },
+    {
+      "id": "aa47",
+      "firstName": "Bez",
+      "lastName": "Klubu2",
+      "teamId": "1",
+      "teamName": "FC Barcelona"
+    },
+    {
+      "id": "x001",
+      "firstName": "Michał",
+      "lastName": "Nowak",
+      "teamId": "",
+      "teamName": ""
+    },
+    {
+      "id": "x002",
+      "firstName": "Paweł",
+      "lastName": "Wiśniewski",
+      "teamId": null,
+      "teamName": null
+    },
+    {
+      "id": "x003",
+      "firstName": "Andrzej",
+      "lastName": "Lewandowski",
+      "teamId": null,
+      "teamName": null
+    },
+    {
+      "id": "x004",
+      "firstName": "Robert",
+      "lastName": "Zieliński",
+      "teamId": null,
+      "teamName": "sdasd"
+    },
+    {
+      "id": "x005",
+      "firstName": "Kamil",
+      "lastName": "Kowalski",
+      "teamId": null,
+      "teamName": null
+    },
+    {
+      "id": "x006",
+      "firstName": "Bartosz",
+      "lastName": "Dąbrowski",
+      "teamId": null,
+      "teamName": null
+    },
+    {
+      "id": "x007",
+      "firstName": "Łukasz",
+      "lastName": "Szymański",
+      "teamId": "fa6e",
+      "teamName": "Adrian Majcher"
+    },
+    {
+      "id": "x008",
+      "firstName": "Adam",
+      "lastName": "Lis",
+      "teamId": null,
+      "teamName": null
+    },
+    {
+      "id": "x009",
+      "firstName": "Piotr",
+      "lastName": "Wojciechowski",
+      "teamId": null,
+      "teamName": null
+    },
+    {
+      "id": "x010",
+      "firstName": "Grzegorz",
+      "lastName": "Mazur",
+      "teamId": "fa6e",
+      "teamName": "Adrian Majcher"
+    },
+    {
+      "id": "aa48",
+      "firstName": "Marek",
+      "lastName": "Kowalski",
+      "teamId": "1",
+      "teamName": "FC Barcelona"
+    },
+    {
+      "id": "aa49",
+      "firstName": "Jacek",
+      "lastName": "Nowak",
+      "teamId": "1",
+      "teamName": "FC Barcelona"
+    },
+    {
+      "id": "aa50",
+      "firstName": "Adam",
+      "lastName": "Lewandowski",
+      "teamId": "1",
+      "teamName": "FC Barcelona"
+    },
+    {
+      "id": "aa51",
+      "firstName": "Piotr",
+      "lastName": "Zieliński",
+      "teamId": "1",
+      "teamName": "FC Barcelona"
+    },
+    {
+      "id": "aa52",
+      "firstName": "Sebastian",
+      "lastName": "Kwiatkowski",
+      "teamId": "1",
+      "teamName": "FC Barcelona"
+    },
+    {
+      "id": "aa53",
+      "firstName": "Kamil",
+      "lastName": "Wiśniewski",
+      "teamId": "1",
+      "teamName": "FC Barcelona"
+    },
+    {
+      "id": "aa54",
+      "firstName": "Łukasz",
+      "lastName": "Jabłoński",
+      "teamId": "1",
+      "teamName": "FC Barcelona"
+    },
+    {
+      "id": "aa55",
+      "firstName": "Wojciech",
+      "lastName": "Szymański",
+      "teamId": "1",
+      "teamName": "FC Barcelona"
+    },
+    {
+      "id": "aa56",
+      "firstName": "Grzegorz",
+      "lastName": "Malinowski",
+      "teamId": "1",
+      "teamName": "FC Barcelona"
+    },
+    {
+      "id": "aa57",
+      "firstName": "Damian",
+      "lastName": "Tomaszewski",
+      "teamId": "1",
+      "teamName": "FC Barcelona"
+    },
+    {
+      "id": "942b",
+      "firstName": "Adrian",
+      "lastName": "MAJCHER",
+      "teamId": "4",
+      "teamName": "Lech Poznań"
+    },
+    {
+      "id": "a6a3",
+      "firstName": "Adrian",
+      "lastName": "MAJCHER",
+      "teamId": "4",
+      "teamName": "Lech Poznań"
+    },
+    {
+      "id": "b57b",
+      "firstName": "Adrian",
+      "lastName": "MAJCHER",
+      "teamId": "4",
+      "teamName": "Lech Poznań"
+    }
+  ],
+  "teams": [
+    {
+      "id": "1",
+      "name": "FC Barcelona",
+      "year": 1899,
+      "location": "Barcelona"
+    },
+    {
+      "id": "2",
+      "name": "Real Madrid",
+      "year": 1903,
+      "location": "Madrid"
+    },
+    {
+      "id": "3",
+      "name": "Legia Warszawa",
+      "year": 1909,
+      "location": "Warszawa"
+    },
+    {
+      "id": "4",
+      "name": "Lech Poznań",
+      "year": 1900,
+      "location": "Poznań"
+    },
+    {
+      "id": "a5c3",
+      "name": "Do wywalenia",
+      "year": 1900,
+      "location": "Do wywalenia"
+    },
+    {
+      "id": "fa6e",
+      "name": "Adrian Majcher",
+      "year": 1987,
+      "location": "Warszawa, Ursynów"
+    }
+  ],
+  "games": [
+    {
+      "id": "1",
+      "date": "2025-01-01",
+      "title": "El Clasico",
+      "place": "Camp Nou",
+      "duration": 90,
+      "score": {
+        "team1": 1,
+        "team2": 9
+      },
+      "team1Id": "1",
+      "team2Id": "2"
+    },
+    {
+      "id": "2",
+      "date": "2025-02-15",
+      "title": "Legia Warszawa vs Lech Poznań",
+      "place": "Stadion Wojska Polskiego",
+      "duration": 90,
+      "score": {
+        "team1": 1,
+        "team2": 1
+      },
+      "team1Id": "3",
+      "team2Id": "4"
+    },
+    {
+      "id": "3",
+      "date": "2025-03-10",
+      "title": "Real Madrid vs Lech Poznań",
+      "place": "Santiago Bernabeu",
+      "duration": 90,
+      "score": {
+        "team1": 0,
+        "team2": 5
+      },
+      "team1Id": "2",
+      "team2Id": "4"
+    },
+    {
+      "id": "4",
+      "date": "2025-04-05",
+      "title": "FC Barcelona vs Legia Warszawa",
+      "place": "Camp Nou",
+      "duration": 90,
+      "score": {
+        "team1": 11,
+        "team2": 11
+      },
+      "team1Id": "1",
+      "team2Id": "3"
+    },
+    {
+      "id": "c1c0",
+      "title": "Zadyma",
+      "date": "2025-01-31",
+      "place": "Tarnów",
+      "duration": 120,
+      "score": {
+        "team1": 7,
+        "team2": 7
+      },
+      "team1Id": "2",
+      "team2Id": "3"
+    },
+    {
+      "id": "af19",
+      "title": "11111",
+      "date": "2025-01-26",
+      "place": "test11",
+      "duration": 77,
+      "score": {
+        "team1": 2,
+        "team2": 2
+      },
+      "team1Id": "1",
+      "team2Id": "3"
+    },
+    {
+      "id": "1195",
+      "title": "11111",
+      "date": "2025-01-26",
+      "place": "test11",
+      "duration": 77,
+      "score": {
+        "team1": 1,
+        "team2": 1
+      },
+      "team1Id": "1",
+      "team2Id": "3"
+    },
+    {
+      "id": "1531",
+      "title": "11111",
+      "date": "2025-01-26",
+      "place": "test11",
+      "duration": 77,
+      "score": {
+        "team1": 0,
+        "team2": 1
+      },
+      "team1Id": "1",
+      "team2Id": "3"
+    },
+    {
+      "id": "1c30",
+      "title": "11111",
+      "date": "2025-02-25",
+      "place": "test11",
+      "duration": 77,
+      "score": {
+        "team1": 1,
+        "team2": 1
+      },
+      "team1Id": "1",
+      "team2Id": "3"
+    },
+    {
+      "id": "962a",
+      "title": "11111",
+      "date": "2025-02-25",
+      "place": "test11",
+      "duration": 77,
+      "score": {
+        "team1": 1,
+        "team2": 2
+      },
+      "team1Id": "1",
+      "team2Id": "3"
+    },
+    {
+      "id": "c0d9",
+      "title": "erwtw",
+      "date": "2025-01-26",
+      "place": "ewr",
+      "duration": 43,
+      "score": {
+        "team1": 3,
+        "team2": 5
+      },
+      "team1Id": "2",
+      "team2Id": "4"
+    },
+    {
+      "id": "d8f9",
+      "title": "dsfsdf",
+      "date": "2025-02-21",
+      "place": "Tarnów",
+      "duration": 111,
+      "score": {
+        "team1": 1,
+        "team2": 2
+      },
+      "team1Id": "1",
+      "team2Id": "2"
+    },
+    {
+      "title": "Ladna nazwa2",
+      "date": "2025-02-21",
+      "place": "Tarnów",
+      "duration": 110,
+      "score": {
+        "team1": 1,
+        "team2": 6
+      },
+      "team1Id": "1",
+      "team2Id": "2",
+      "id": "d43a"
+    },
+    {
+      "title": "Ladna nazwa",
+      "date": "2025-02-21",
+      "place": "Tarnów",
+      "duration": 111,
+      "score": {
+        "team1": 1,
+        "team2": 2
+      },
+      "team1Id": "1",
+      "team2Id": "3",
+      "id": "33bd"
+    },
+    {
+      "id": "ae1f",
+      "title": "2024",
+      "date": "2024-12-02",
+      "place": "2024",
+      "duration": 100,
+      "score": {
+        "team1": 3,
+        "team2": 33
+      },
+      "team1Id": "1",
+      "team2Id": "3"
+    }
+  ]
+}
