@@ -1,10 +1,10 @@
 import styled from 'styled-components'
+import { Button } from '../../components/Button'
 import { useState } from 'react'
 import Players from '../Players/Players'
 import { Teams } from '../Teams'
 import { Competitions } from '../Competitions/Competitions'
 import { Stats } from '../Stats/Stats'
-import { Button } from '../../component/Button'
 
 const MainDiv = styled.div`
     display: flex;

@@ -2,8 +2,8 @@ import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { Tabs } from './pages/Tabs'
 import { useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ThemeSwitcher } from './component/ThemeSwitcher'
-import { Paragraph } from './component/Paragraph'
+import { Paragraph } from './components/Paragraph'
+import { ThemeSwitcher } from './components/ThemeSwitcher'
 
 const queryClient = new QueryClient()
 
