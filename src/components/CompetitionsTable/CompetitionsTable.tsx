@@ -19,6 +19,8 @@ const StyledTable = styled.table`
 
 const StyledTableHeader = styled.th`
   padding: 10px;
+  position: sticky;
+  top: 0;
   border: 1px solid ${(props) => props.theme.colors.textBackground};
   background-color: ${(props) => props.theme.colors.primary};
   text-align: left;
@@ -54,16 +56,14 @@ export const CompetitionTable = ({
     <StyledWrapper>
       <StyledTable>
         <thead>
-          <tr>
-            <StyledTableHeader>Game Name</StyledTableHeader>
-            <StyledTableHeader>Date</StyledTableHeader>
-            <StyledTableHeader>Place</StyledTableHeader>
-            <StyledTableHeader>Duration</StyledTableHeader>
-            <StyledTableHeader>Result</StyledTableHeader>
-            <StyledTableHeader>Team 1</StyledTableHeader>
-            <StyledTableHeader>Team 2</StyledTableHeader>
-            <StyledTableHeader>Edit competition</StyledTableHeader>
-          </tr>
+          <StyledTableHeader>Game Name</StyledTableHeader>
+          <StyledTableHeader>Date</StyledTableHeader>
+          <StyledTableHeader>Place</StyledTableHeader>
+          <StyledTableHeader>Duration</StyledTableHeader>
+          <StyledTableHeader>Result</StyledTableHeader>
+          <StyledTableHeader>Team 1</StyledTableHeader>
+          <StyledTableHeader>Team 2</StyledTableHeader>
+          <StyledTableHeader>Edit competition</StyledTableHeader>
         </thead>
         <tbody>
           {competitions.map((competition) => {

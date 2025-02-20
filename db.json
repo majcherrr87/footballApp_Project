@@ -221,8 +221,8 @@
       "id": "c14i",
       "firstName": "Wojciech",
       "lastName": "Szymański",
-      "teamId": "4",
-      "teamName": "Lech Poznań"
+      "teamId": "",
+      "teamName": ""
     },
     {
       "id": "c14j",
@@ -281,23 +281,9 @@
       "teamName": "FC Barcelona"
     },
     {
-      "id": "x001",
-      "firstName": "Michał",
-      "lastName": "Nowak",
-      "teamId": "",
-      "teamName": ""
-    },
-    {
       "id": "x002",
       "firstName": "Paweł",
       "lastName": "Wiśniewski",
-      "teamId": null,
-      "teamName": null
-    },
-    {
-      "id": "x003",
-      "firstName": "Andrzej",
-      "lastName": "Lewandowski",
       "teamId": null,
       "teamName": null
     },
@@ -407,11 +393,11 @@
       "teamName": "FC Barcelona"
     },
     {
-      "id": "aa56",
       "firstName": "Grzegorz",
       "lastName": "Malinowski",
-      "teamId": "1",
-      "teamName": "FC Barcelona"
+      "teamId": "2",
+      "teamName": "Real Madrid",
+      "id": "aa56"
     },
     {
       "id": "aa57",
@@ -421,25 +407,25 @@
       "teamName": "FC Barcelona"
     },
     {
-      "id": "942b",
       "firstName": "Adrian",
       "lastName": "MAJCHER",
-      "teamId": "4",
-      "teamName": "Lech Poznań"
+      "teamId": "1",
+      "teamName": "FC Barcelona",
+      "id": "942b"
     },
     {
       "id": "a6a3",
       "firstName": "Adrian",
       "lastName": "MAJCHER",
-      "teamId": "4",
-      "teamName": "Lech Poznań"
+      "teamId": "",
+      "teamName": ""
     },
     {
       "id": "b57b",
       "firstName": "Adrian",
       "lastName": "MAJCHER",
-      "teamId": "4",
-      "teamName": "Lech Poznań"
+      "teamId": "",
+      "teamName": ""
     }
   ],
   "teams": [

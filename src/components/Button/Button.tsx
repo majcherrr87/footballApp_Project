@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Tooltip } from '../Tooltip/Tooltip'
 
 interface ButtonProps {
   label: string
@@ -6,6 +7,7 @@ interface ButtonProps {
   variant?: 'success' | 'warning' | 'danger'
   isLoading?: boolean
   isDisabled?: boolean
+  tooltip?: string
 }
 
 const StyledButton = styled.button<{
@@ -35,7 +37,7 @@ const StyledButton = styled.button<{
 
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.6;
+    opacity: 0.3;
   }
 `
 
@@ -45,14 +47,17 @@ export const Button = ({
   variant,
   isLoading,
   isDisabled,
+  tooltip,
 }: ButtonProps) => {
   return (
-    <StyledButton
-      onClick={onClick}
-      variant={variant}
-      disabled={isDisabled || isLoading}
-    >
-      {isLoading ? 'Loading...' : label}
-    </StyledButton>
+    <Tooltip text={tooltip}>
+      <StyledButton
+        onClick={onClick}
+        variant={variant}
+        disabled={isDisabled || isLoading}
+      >
+        {isLoading ? 'Loading...' : label}
+      </StyledButton>
+    </Tooltip>
   )
 }

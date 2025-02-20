@@ -18,10 +18,13 @@ const StyledTable = styled.table`
 
 const StyledTableHeader = styled.th`
   padding: 10px;
+  position: sticky;
+  top: 0;
   border: 1px solid ${(props) => props.theme.colors.textBackground};
   background-color: ${(props) => props.theme.colors.primary};
   text-align: left;
   color: ${(props) => props.theme.colors.textPrimary};
+  z-index: 10;
 `
 
 const StyledTableRow = styled.tr`
@@ -74,16 +77,14 @@ export const Table = <T extends { id: string; teamName?: string }>({
                 </StyledTableData>
               ))}
               <StyledTableData>
-                {item.teamName ? (
-                  <span>Cannot delete - in a team</span>
-                ) : (
-                  <Button
-                    variant="danger"
-                    label="Delete"
-                    onClick={() => onDelete(item.id)}
-                    isLoading={isLoading}
-                  />
-                )}
+                <Button
+                  variant="danger"
+                  label="Delete"
+                  tooltip={item.teamName ? 'Cannot delete - in a team' : ''}
+                  isDisabled={!!item.teamName}
+                  onClick={() => onDelete(item.id)}
+                  isLoading={isLoading}
+                />
               </StyledTableData>
               <StyledTableData>
                 <Button

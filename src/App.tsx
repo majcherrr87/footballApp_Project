@@ -1,23 +1,14 @@
-import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import { Tabs } from './pages/Tabs'
 import { useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Paragraph } from './components/Paragraph'
 import { ThemeSwitcher } from './components/ThemeSwitcher'
+import { GlobalStyle } from './components/GlobalStyle/GlobalStyle'
 
 const queryClient = new QueryClient()
 
-const GlobalStyle = createGlobalStyle`
-    body {
-        margin: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: ${(props) => props.theme.colors.background};
-        display: flex;
-        flex-direction: column;
-    }`
-
-function App() {
+export const App = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>('dark')
 
   const light = {
@@ -72,5 +63,3 @@ function App() {
     </QueryClientProvider>
   )
 }
-
-export default App

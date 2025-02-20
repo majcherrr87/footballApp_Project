@@ -12,23 +12,19 @@ const StyledWrapper = styled.div`
 `
 
 export const Actions = () => {
-  const [formToShow, setFormToShow] = useState<'add' | ''>('')
-
-  const handleShowForm = (typeOfForm: 'add') => {
-    setFormToShow(typeOfForm)
-  }
+  const [formToShow, setFormToShow] = useState(false)
 
   return (
     <div>
       <StyledWrapper>
         <Button
-          label="Add Team"
+          label={formToShow ? 'Cancel' : 'Add Team'}
           variant="success"
-          onClick={() => handleShowForm('add')}
+          onClick={() => setFormToShow((prev) => !prev)}
         />
       </StyledWrapper>
 
-      {formToShow === 'add' && <AddTeamForm />}
+      {formToShow && <AddTeamForm />}
     </div>
   )
 }
