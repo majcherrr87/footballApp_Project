@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Header } from '../../components/Header'
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import { Actions } from './components/Actions'
 import { Team } from '../../types'
 import { TeamTable } from '../../components/TeamsTable/TeamsTable'
@@ -60,7 +60,7 @@ export const Teams = () => {
     const team = data?.find((t) => t.id === id)
 
     const isConfirmed = window.confirm(
-      `Are you sure you want to delete ${team?.name}?`,
+      `Czy jesteś pewien że chcesz usunąć ${team?.name}?`,
     )
 
     if (isConfirmed) {
@@ -69,11 +69,11 @@ export const Teams = () => {
   }
 
   if (isLoading || isPending || isLoadingGames) {
-    return <div>Loading...</div>
+    return <div>Ładowanie...</div>
   }
 
   if (error || !data || deleteError || errorGames) {
-    return <div>Error</div>
+    return <div>Błąd</div>
   }
 
   const render = () => {
@@ -93,7 +93,7 @@ export const Teams = () => {
     }
 
     return (
-      <Fragment>
+      <>
         <Actions />
 
         <TeamTable
@@ -104,13 +104,13 @@ export const Teams = () => {
           onDelete={handleDeleteTeam}
           isEnableToDelete={isEnableToDelete}
         />
-      </Fragment>
+      </>
     )
   }
 
   return (
     <StyledWrapper>
-      <Header level={1}>Teams</Header>
+      <Header level={1}>Drużyny</Header>
 
       {render()}
     </StyledWrapper>

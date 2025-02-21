@@ -5,7 +5,7 @@ import { Table } from '../../components/PlayersTable'
 import { Player } from '../../types'
 import { Actions } from './components/Actions'
 import { useDeletePlayerMutation } from '../../queries/useDeletePlayerMutation'
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import { EditForm } from './components/EditForm'
 
 const StyledWrapper = styled.div`
@@ -23,7 +23,7 @@ const Players = () => {
     const player = data?.find((p) => p.id === id)
 
     const isConfirmed = window.confirm(
-      `Are you sure you want to delete ${player?.firstName} ${player?.lastName}?`,
+      `Czy na pewno chcesz usunąć gracza ${player?.firstName} ${player?.lastName}?`,
     )
 
     if (isConfirmed) {
@@ -42,39 +42,32 @@ const Players = () => {
   }
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <div>Ładowanie...</div>
   }
 
   if (error || !data) {
-    return <div>Error</div>
+    return <div>Błąd</div>
   }
-
-  const columns: { key: keyof Player; label: string }[] = [
-    { key: 'firstName', label: 'First Name' },
-    { key: 'lastName', label: 'Last Name' },
-    { key: 'teamName', label: 'Team' },
-  ]
 
   return (
     <StyledWrapper>
-      <Header level={1}>Players</Header>
+      <Header level={1}>Gracze</Header>
 
       {error || (deleteError && <div>Error</div>)}
 
       {editingPlayer ? (
         <EditForm player={editingPlayer} onCancel={cancelEdit} />
       ) : (
-        <Fragment>
+        <>
           <Actions />
 
           <Table
             data={data}
-            columns={columns}
             onDelete={handleDelete}
             onEdit={handleEdit}
             isLoading={isPending}
           />
-        </Fragment>
+        </>
       )}
     </StyledWrapper>
   )

@@ -55,6 +55,7 @@ const StyledButtonWrapper = styled.div`
   justify-content: flex-end;
   width: 100%;
   margin-top: 15px;
+  gap: 1rem;
 `
 
 interface EditFormProps {
@@ -101,16 +102,16 @@ export const EditForm = ({ player, onCancel }: EditFormProps) => {
   }
 
   if (isPending || isLoading) {
-    return <div>Loading...</div>
+    return <div>Ładowanie...</div>
   }
 
   if (error || teamsError) {
-    return <div>Error: {error?.message || teamsError?.message}</div>
+    return <div>Błąd: {error?.message || teamsError?.message}</div>
   }
 
   return (
     <FormWrapper onSubmit={onSubmit}>
-      <Label htmlFor="firstName">First name</Label>
+      <Label htmlFor="firstName">Imię</Label>
       <Input
         type="text"
         id="firstName"
@@ -122,7 +123,7 @@ export const EditForm = ({ player, onCancel }: EditFormProps) => {
       />
       {errors.firstName && <p style={{ color: 'red' }}>{errors.firstName}</p>}
 
-      <Label htmlFor="lastName">Last name</Label>
+      <Label htmlFor="lastName">Nazwisko</Label>
       <Input
         type="text"
         id="lastName"
@@ -134,7 +135,7 @@ export const EditForm = ({ player, onCancel }: EditFormProps) => {
       />
       {errors.lastName && <p style={{ color: 'red' }}>{errors.lastName}</p>}
 
-      <Label htmlFor="teamId">Team</Label>
+      <Label htmlFor="teamId">Drużyna</Label>
       <Select
         id="teamId"
         name="teamId"
@@ -149,7 +150,7 @@ export const EditForm = ({ player, onCancel }: EditFormProps) => {
           }))
         }}
       >
-        <option value="0">Without team</option>
+        <option value="0">Bez drużyny</option>
         {teams?.map((team) => (
           <option key={team.id} value={team.id}>
             {team.name}
@@ -158,8 +159,8 @@ export const EditForm = ({ player, onCancel }: EditFormProps) => {
       </Select>
 
       <StyledButtonWrapper>
-        <Button label="Save" variant="success" />
-        <Button label="Cancel" variant="danger" onClick={onCancel} />
+        <Button label="Zapisz" variant="success" />
+        <Button label="Anuluj" variant="danger" onClick={onCancel} />
       </StyledButtonWrapper>
     </FormWrapper>
   )

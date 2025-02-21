@@ -1,7 +1,7 @@
 const API_KEY = import.meta.env.VITE_API_KEY
 
 export const useApi = () => {
-  const call = async <R, P = {}>(
+  const call = async <R, P = object>(
     url: string,
     method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH',
     body?: P,

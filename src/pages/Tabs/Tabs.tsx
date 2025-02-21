@@ -5,6 +5,7 @@ import Players from '../Players/Players'
 import { Teams } from '../Teams'
 import { Competitions } from '../Competitions/Competitions'
 import { Stats } from '../Stats/Stats'
+import { RowCenterFlex } from '../../components/RowCenterFlex/RowCenterFlex'
 
 const MainDiv = styled.div`
   display: flex;
@@ -14,14 +15,6 @@ const MainDiv = styled.div`
   gap: 1rem;
   margin-bottom: 2rem;
   color: ${(props) => props.theme.colors.textBackground};
-`
-
-const StyledWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
 `
 
 export const Tabs = () => {
@@ -48,7 +41,7 @@ export const Tabs = () => {
 
   return (
     <MainDiv>
-      <StyledWrapper>
+      <RowCenterFlex>
         <Button
           label="Baza graczy"
           onClick={() => handleTabChange('players')}
@@ -65,7 +58,7 @@ export const Tabs = () => {
           label="Statystyki"
           onClick={() => handleTabChange('statistics')}
         />
-      </StyledWrapper>
+      </RowCenterFlex>
 
       {renderTabContent(activeTab)}
     </MainDiv>

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Button } from '../Button'
+import { Player } from '../../types'
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -41,19 +42,22 @@ const StyledTableData = styled.td`
 
 type TableProps<T> = {
   data: T[]
-  columns: { key: keyof T; label: string }[]
   onDelete: (id: string) => void
   onEdit: (item: T) => void
   isLoading: boolean
 }
+const columns: { key: keyof Player; label: string }[] = [
+  { key: 'firstName', label: 'First Name' },
+  { key: 'lastName', label: 'Last Name' },
+  { key: 'teamName', label: 'Team' },
+]
 
-export const Table = <T extends { id: string; teamName?: string }>({
+export const Table = ({
   data,
-  columns,
   onDelete,
   onEdit,
   isLoading,
-}: TableProps<T>) => {
+}: TableProps<Player>) => {
   return (
     <StyledWrapper>
       <StyledTable>
@@ -64,8 +68,8 @@ export const Table = <T extends { id: string; teamName?: string }>({
                 {column.label}
               </StyledTableHeader>
             ))}
-            <StyledTableHeader>Delete</StyledTableHeader>
-            <StyledTableHeader>Edit</StyledTableHeader>
+            <StyledTableHeader>Usuń</StyledTableHeader>
+            <StyledTableHeader>Edytuj</StyledTableHeader>
           </tr>
         </thead>
         <tbody>
@@ -79,8 +83,12 @@ export const Table = <T extends { id: string; teamName?: string }>({
               <StyledTableData>
                 <Button
                   variant="danger"
-                  label="Delete"
-                  tooltip={item.teamName ? 'Cannot delete - in a team' : ''}
+                  label="Usuń"
+                  tooltip={
+                    item.teamName
+                      ? 'Nie można usuną gracza który jest w drużynie'
+                      : ''
+                  }
                   isDisabled={!!item.teamName}
                   onClick={() => onDelete(item.id)}
                   isLoading={isLoading}
@@ -88,7 +96,7 @@ export const Table = <T extends { id: string; teamName?: string }>({
               </StyledTableData>
               <StyledTableData>
                 <Button
-                  label="Edit"
+                  label="Edytuj"
                   variant="warning"
                   isLoading={isLoading}
                   onClick={() => onEdit(item)}

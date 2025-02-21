@@ -39,8 +39,11 @@ const StyledButtonWrapper = styled.div`
   width: 100%;
   margin-top: 15px;
 `
+type AddTeamFormProps = {
+  cloceAddTeam: () => void
+}
 
-export const AddTeamForm = () => {
+export const AddTeamForm = ({ cloceAddTeam }: AddTeamFormProps) => {
   const [value, setValue] = useState({
     name: '',
     year: 1900,
@@ -57,12 +60,12 @@ export const AddTeamForm = () => {
 
   const validateFields = () => {
     const newErrors = {
-      name: value.name.trim() === '' ? 'Name is required' : '',
+      name: value.name.trim() === '' ? 'Nazwa jest wymagana' : '',
       year:
         value.year < 1900 || value.year > new Date().getFullYear()
-          ? 'Year must be between 1900 and current year'
+          ? 'Rok musi być nie mniejszy niż 1900'
           : '',
-      location: value.location.trim() === '' ? 'Location is required' : '',
+      location: value.location.trim() === '' ? 'Lokalizacja jest wymagana' : '',
     }
     setErrors(newErrors)
 
@@ -78,20 +81,21 @@ export const AddTeamForm = () => {
         year: value.year,
         location: value.location,
       })
+      cloceAddTeam()
     }
   }
 
   if (isPending) {
-    return <div>Loading...</div>
+    return <div>Ładowanie...</div>
   }
 
   if (error) {
-    return <div>Error: {error?.message}</div>
+    return <div>Błąd: {error?.message}</div>
   }
 
   return (
     <FormWrapper onSubmit={onSubmit}>
-      <Label htmlFor="name">Club name</Label>
+      <Label htmlFor="name">Nazwa Drużyny</Label>
       <Input
         type="text"
         id="name"
@@ -103,7 +107,7 @@ export const AddTeamForm = () => {
       />
       {errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
 
-      <Label htmlFor="year">Year of foundation</Label>
+      <Label htmlFor="year">Rok założenie</Label>
       <Input
         type="number"
         id="year"
@@ -118,7 +122,7 @@ export const AddTeamForm = () => {
       />
       {errors.year && <p style={{ color: 'red' }}>{errors.year}</p>}
 
-      <Label htmlFor="location">Team location</Label>
+      <Label htmlFor="location">Lokalizacja</Label>
       <Input
         type="text"
         id="location"
@@ -130,7 +134,7 @@ export const AddTeamForm = () => {
       />
 
       <StyledButtonWrapper>
-        <Button label="Add team" variant="success" />
+        <Button label="Dodaj drużyne" variant="success" />
       </StyledButtonWrapper>
     </FormWrapper>
   )

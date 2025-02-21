@@ -1,10 +1,11 @@
-import styled, { ThemeProvider } from 'styled-components'
+import { ThemeProvider } from 'styled-components'
 import { Tabs } from './pages/Tabs'
 import { useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Paragraph } from './components/Paragraph'
 import { ThemeSwitcher } from './components/ThemeSwitcher'
 import { GlobalStyle } from './components/GlobalStyle/GlobalStyle'
+import { RowCenterFlex } from './components/RowCenterFlex/RowCenterFlex'
 
 const queryClient = new QueryClient()
 
@@ -13,50 +14,42 @@ export const App = () => {
 
   const light = {
     colors: {
-      primary: '#5f6d6d',
-      secondary: '#5c5c5c',
-      success: '#5cb85c',
-      warning: '#f0ad4e',
-      danger: '#d9534f',
-      textPrimary: 'white',
-      background: '#f9f9f9',
-      textBackground: 'black',
-      formBackground: '#f0f0f0',
+      primary: '#3B5998',
+      secondary: '#8E8E8E',
+      success: '#4CAF50',
+      warning: '#FF9800',
+      danger: '#E53935',
+      textPrimary: '#2C2C2C',
+      background: '#FAFAFA',
+      textBackground: '#404040',
+      formBackground: '#EEEEEE',
     },
   }
 
   const dark = {
     colors: {
-      primary: '#bfbfbf',
-      secondary: '#2c5c5c',
-      success: '#5cb85c',
-      warning: '#f0ad4e',
-      danger: '#d9534f',
-      textPrimary: '#000000',
-      background: '#1a1a1a',
-      textBackground: '#bfbfbf',
-      formBackground: '#333333',
+      primary: '#4C8BF5',
+      secondary: '#6D6D6D',
+      success: '#66BB6A',
+      warning: '#FFA726',
+      danger: '#EF5350',
+      textPrimary: '#F1F1F1',
+      background: '#181818',
+      textBackground: '#D1D1D1',
+      formBackground: '#282828',
     },
   }
-
-  const StyledRow = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    margin: 2rem 0;
-  `
 
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme === 'light' ? light : dark}>
         <GlobalStyle />
 
-        <StyledRow>
+        <RowCenterFlex>
           <Paragraph>Football App</Paragraph>
 
           <ThemeSwitcher theme={theme} setTheme={setTheme} />
-        </StyledRow>
+        </RowCenterFlex>
 
         <Tabs />
       </ThemeProvider>

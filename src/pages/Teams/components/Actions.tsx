@@ -1,30 +1,22 @@
-import styled from 'styled-components'
 import { Button } from '../../../components/Button'
 import { useState } from 'react'
 import { AddTeamForm } from './AddTeamForm'
-
-const StyledWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-`
+import { RowCenterFlex } from '../../../components/RowCenterFlex/RowCenterFlex'
 
 export const Actions = () => {
   const [formToShow, setFormToShow] = useState(false)
 
   return (
     <div>
-      <StyledWrapper>
+      <RowCenterFlex>
         <Button
-          label={formToShow ? 'Cancel' : 'Add Team'}
+          label={formToShow ? 'Anuluj' : 'Dodaj drużynę'}
           variant="success"
           onClick={() => setFormToShow((prev) => !prev)}
         />
-      </StyledWrapper>
+      </RowCenterFlex>
 
-      {formToShow && <AddTeamForm />}
+      {formToShow && <AddTeamForm cloceAddTeam={() => setFormToShow(false)} />}
     </div>
   )
 }

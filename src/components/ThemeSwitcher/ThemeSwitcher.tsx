@@ -7,8 +7,7 @@ interface ThemeSwitcherProps {
 }
 
 export const ThemeSwitcher = ({ theme, setTheme }: ThemeSwitcherProps) => {
-  const label =
-    theme === 'light' ? 'Switch to Dark Theme' : 'Switch to Light Theme'
+  const label = theme === 'light' ? 'Ciemny motyw' : 'Jasny motyw'
 
   const handleOnClick = () => {
     setTheme(theme === 'light' ? 'dark' : 'light')

@@ -25,6 +25,9 @@ const StyledTableHeader = styled.th`
   background-color: ${(props) => props.theme.colors.primary};
   text-align: left;
   color: ${(props) => props.theme.colors.textPrimary};
+  z-index: 10;
+  min-width: 120px; /* Możesz dostosować szerokość */
+  white-space: nowrap; /* Zapobiega zawijaniu tekstu */
 `
 
 const StyledTableRow = styled.tr`
@@ -37,6 +40,10 @@ const StyledTableData = styled.td`
   padding: 10px;
   border: 1px solid ${(props) => props.theme.colors.textBackground};
   text-align: center;
+  min-width: 120px; /* Dopasuj szerokość */
+  white-space: nowrap; /* Zapobiega zawijaniu */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Doda "..." gdy tekst jest za długi */
 `
 
 type CompetitionTableProps = {

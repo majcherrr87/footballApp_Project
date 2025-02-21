@@ -55,8 +55,11 @@ const StyledButtonWrapper = styled.div`
   width: 100%;
   margin-top: 15px;
 `
+type AddFormProps = {
+  cloceAddForm: () => void
+}
 
-export const AddForm = () => {
+export const AddForm = ({ cloceAddForm }: AddFormProps) => {
   const [value, setValue] = useState({
     firstName: '',
     lastName: '',
@@ -74,8 +77,8 @@ export const AddForm = () => {
 
   const validateFields = () => {
     const newErrors = {
-      firstName: value.firstName.trim() === '' ? 'First name is required' : '',
-      lastName: value.lastName.trim() === '' ? 'Last name is required' : '',
+      firstName: value.firstName.trim() === '' ? 'Imię jest wymagane' : '',
+      lastName: value.lastName.trim() === '' ? 'Nazwisko jest wymagane' : '',
     }
     setErrors(newErrors)
     return !Object.values(newErrors).some((error) => error !== '')
@@ -90,6 +93,7 @@ export const AddForm = () => {
         teamId: value.teamId,
         teamName: value.teamName,
       })
+      cloceAddForm()
     }
   }
 
@@ -103,7 +107,7 @@ export const AddForm = () => {
 
   return (
     <FormWrapper onSubmit={onSubmit}>
-      <Label htmlFor="firstName">First name</Label>
+      <Label htmlFor="firstName">Imię</Label>
       <Input
         type="text"
         id="firstName"
@@ -115,7 +119,7 @@ export const AddForm = () => {
       />
       {errors.firstName && <p style={{ color: 'red' }}>{errors.firstName}</p>}
 
-      <Label htmlFor="lastName">Last name</Label>
+      <Label htmlFor="lastName">Nazwisko</Label>
       <Input
         type="text"
         id="lastName"
@@ -127,7 +131,7 @@ export const AddForm = () => {
       />
       {errors.lastName && <p style={{ color: 'red' }}>{errors.lastName}</p>}
 
-      <Label htmlFor="teamId">Team</Label>
+      <Label htmlFor="teamId">Drużyna</Label>
       <Select
         id="teamId"
         name="teamId"
@@ -142,7 +146,7 @@ export const AddForm = () => {
           }))
         }}
       >
-        <option value="0">Without team</option>
+        <option value="0">Bez drużyny</option>
         {teams?.map((team) => (
           <option key={team.id} value={team.id}>
             {team.name}
@@ -151,7 +155,7 @@ export const AddForm = () => {
       </Select>
 
       <StyledButtonWrapper>
-        <Button label="Add" variant="success" />
+        <Button label="Dodaj" variant="success" />
       </StyledButtonWrapper>
     </FormWrapper>
   )
