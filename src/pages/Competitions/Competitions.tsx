@@ -4,7 +4,7 @@ import { Actions } from './components/Actions'
 import { useGetCompetitionsQuery } from '../../queries/useGetCompetitionsQuery'
 import { CompetitionTable } from '../../components/CompetitionsTable/CompetitionsTable'
 import { useGetTeamsQuery } from '../../queries/useGetTeamsQuery'
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import { Game } from '../../types'
 import { EditCompetitionForm } from './components/EditCompetitionForm'
 
@@ -27,9 +27,9 @@ export const Competitions = () => {
   } = useGetTeamsQuery()
 
   const getTeamNameById = (id: string) => {
-    if (isTeamsLoading || !Teams) return 'Loading...'
+    if (isTeamsLoading || !Teams) return 'Ładowanie...'
     const team = Teams.find((team) => team.id === id)
-    return team ? team.name : 'Unknown Team'
+    return team ? team.name : 'Nieznana drużyna'
   }
 
   const handleEditCompetition = (competition: Game) => {
@@ -41,11 +41,11 @@ export const Competitions = () => {
   }
 
   if (isLoading || isTeamsLoading) {
-    return <div>Loading...</div>
+    return <div>Ładowanie...</div>
   }
 
   if (error || !data || errorTeams) {
-    return <div>Error</div>
+    return <div>Bład</div>
   }
 
   const render = () => {
@@ -59,7 +59,7 @@ export const Competitions = () => {
     }
 
     return (
-      <Fragment>
+      <>
         <Actions />
         <CompetitionTable
           competitions={data}
@@ -67,13 +67,13 @@ export const Competitions = () => {
           getTeamNameById={getTeamNameById}
           onEditCompetition={handleEditCompetition}
         />
-      </Fragment>
+      </>
     )
   }
 
   return (
     <StyledWrapper>
-      <Header level={1}>Competitions</Header>
+      <Header level={1}>Rozgrywki</Header>
 
       {render()}
     </StyledWrapper>

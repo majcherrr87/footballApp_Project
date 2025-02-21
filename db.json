@@ -46,8 +46,8 @@
       "id": "2c",
       "firstName": "Luka",
       "lastName": "Modric",
-      "teamId": "",
-      "teamName": ""
+      "teamId": "a98a",
+      "teamName": "Wisła Kraków"
     },
     {
       "id": "3a",
@@ -281,9 +281,8 @@
   ],
   "games": [
     {
-      "id": "1",
+      "title": "FC Barcelona vs Real Madrid",
       "date": "2025-01-01",
-      "title": "El Clasico",
       "place": "Camp Nou",
       "duration": 90,
       "score": {
@@ -291,7 +290,8 @@
         "team2": 9
       },
       "team1Id": "1",
-      "team2Id": "2"
+      "team2Id": "2",
+      "id": "1"
     },
     {
       "id": "2",
@@ -320,17 +320,17 @@
       "team2Id": "6"
     },
     {
-      "id": "4",
+      "title": "AC Milan vs Wisła Kraków",
       "date": "2025-01-05",
-      "title": "Juventus vs Paris Saint-Germain",
       "place": "Allianz Stadium",
       "duration": 50,
       "score": {
         "team1": 0,
         "team2": 2
       },
-      "team1Id": "7",
-      "team2Id": "8"
+      "team1Id": "10",
+      "team2Id": "a98a",
+      "id": "4"
     },
     {
       "id": "5",
@@ -409,6 +409,19 @@
       },
       "team1Id": "10",
       "team2Id": "9"
+    },
+    {
+      "title": "AC Milan vs Lech Poznań",
+      "date": "2025-02-14",
+      "place": "Camp Nou",
+      "duration": 90,
+      "score": {
+        "team1": 2,
+        "team2": 3
+      },
+      "team1Id": "10",
+      "team2Id": "4",
+      "id": "79f0"
     }
   ]
 }

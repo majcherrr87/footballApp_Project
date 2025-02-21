@@ -38,6 +38,7 @@ const Select = styled.select`
   width: 100%;
   padding: 10px;
   margin-top: 5px;
+  margin-bottom: 16px;
   border-radius: 4px;
   border: 1px solid ${(props) => props.theme.colors.textBackground};
   box-sizing: border-box;
@@ -92,24 +93,24 @@ export const EditTeamRosterForm = ({ team, onClose }: EditTeamRosterProps) => {
   }
 
   if (isPending) {
-    return <p>Loading..</p>
+    return <p>Ładowanie...</p>
   }
 
   return (
     <ModalOverlay>
       <ModalContent>
-        <h3>Edit Team Roster</h3>
+        <h3>Edytuj skłąd drużyny</h3>
 
-        <Label>Current Players</Label>
+        <Label>Gracze w drużynie</Label>
         {loadingTeamPlayers ? (
-          <p>Loading players...</p>
+          <p>Ładowanie graczy...</p>
         ) : (
           <PlayerList>
             {playersInTeam?.map((player) => (
               <PlayerItem key={player.id}>
                 {player.firstName} {player.lastName}
                 <Button
-                  label="Remove"
+                  label="Usuń"
                   variant="danger"
                   onClick={() => handleRemovePlayer(player.id)}
                 />
@@ -118,16 +119,16 @@ export const EditTeamRosterForm = ({ team, onClose }: EditTeamRosterProps) => {
           </PlayerList>
         )}
 
-        <Label>Add New Player</Label>
+        <Label>Dodaj do drużyny</Label>
         {loadingFreePlayers ? (
-          <p>Loading available players...</p>
+          <p>Ładowanie graczy...</p>
         ) : (
           <>
             <Select
               value={selectedPlayer}
               onChange={(e) => setSelectedPlayer(e.target.value)}
             >
-              <option value="">-- Select Player --</option>
+              <option value="">Wybierz gracza</option>
               {playersWithoutTeam?.map((player) => (
                 <option key={player.id} value={player.id}>
                   {player.firstName} {player.lastName}
@@ -135,7 +136,7 @@ export const EditTeamRosterForm = ({ team, onClose }: EditTeamRosterProps) => {
               ))}
             </Select>
             <Button
-              label="Add Player"
+              label="Dodaj gracza"
               variant="success"
               onClick={handleAddPlayer}
               isDisabled={!selectedPlayer}
@@ -144,7 +145,7 @@ export const EditTeamRosterForm = ({ team, onClose }: EditTeamRosterProps) => {
         )}
 
         <ButtonWrapper>
-          <Button label="Close" variant="danger" onClick={onClose} />
+          <Button label="Zamknij" variant="danger" onClick={onClose} />
         </ButtonWrapper>
       </ModalContent>
     </ModalOverlay>

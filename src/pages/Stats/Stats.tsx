@@ -1,9 +1,8 @@
 import styled from 'styled-components'
 import { Header } from '../../components/Header'
 import { useGetCompetitionsQuery } from '../../queries/useGetCompetitionsQuery'
-import { Fragment } from 'react'
 import { LastGame } from './components/LastGame'
-import Chart from './components/Chart'
+import { Chart } from './components/Chart'
 import { TopThreeteams } from './components/TopThreeTeams'
 
 const StyledWrapper = styled.div`
@@ -27,28 +26,32 @@ export const Stats = () => {
   const lastGame = getLastGame()
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <div>Ładowanie...</div>
   }
 
   if (error || !data) {
-    return <div>Error</div>
+    return <div>Błąd</div>
   }
 
   const render = () => {
     return (
-      <Fragment>
-        {lastGame ? <LastGame lastGame={lastGame} /> : 'Last game not found'}
+      <>
+        {lastGame ? (
+          <LastGame lastGame={lastGame} />
+        ) : (
+          'Nie znaleziono ostatniej gry'
+        )}
 
         <Chart />
 
         <TopThreeteams />
-      </Fragment>
+      </>
     )
   }
 
   return (
     <StyledWrapper>
-      <Header level={1}>Stats</Header>
+      <Header level={1}>Statystyki</Header>
 
       {render()}
     </StyledWrapper>

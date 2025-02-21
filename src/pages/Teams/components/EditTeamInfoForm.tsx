@@ -46,6 +46,7 @@ const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-top: 15px;
+  gap: 1rem;
 `
 
 type EditTeamInfoProps = {
@@ -75,9 +76,9 @@ export const EditTeamInfoForm = ({ team, onClose }: EditTeamInfoProps) => {
   return (
     <ModalOverlay>
       <ModalContent>
-        <h3>Edit Team Info</h3>
+        <h3>Edytuj dane drużyny</h3>
         <form onSubmit={handleSubmit}>
-          <Label htmlFor="name">Team Name</Label>
+          <Label htmlFor="name">Nazwa drużyny</Label>
           <Input
             id="name"
             name="name"
@@ -85,7 +86,7 @@ export const EditTeamInfoForm = ({ team, onClose }: EditTeamInfoProps) => {
             onChange={handleChange}
           />
 
-          <Label htmlFor="year">Year Founded</Label>
+          <Label htmlFor="year">Rok założenia</Label>
           <Input
             id="year"
             name="year"
@@ -94,7 +95,7 @@ export const EditTeamInfoForm = ({ team, onClose }: EditTeamInfoProps) => {
             onChange={handleChange}
           />
 
-          <Label htmlFor="location">Location</Label>
+          <Label htmlFor="location">Lokalizacja</Label>
           <Input
             id="location"
             name="location"
@@ -103,8 +104,8 @@ export const EditTeamInfoForm = ({ team, onClose }: EditTeamInfoProps) => {
           />
 
           <ButtonWrapper>
-            <Button label="Cancel" variant="danger" onClick={onClose} />
-            <Button label="Save" variant="success" isLoading={isPending} />
+            <Button label="Anuluj" variant="danger" onClick={onClose} />
+            <Button label="Zapisz" variant="success" isLoading={isPending} />
           </ButtonWrapper>
         </form>
       </ModalContent>

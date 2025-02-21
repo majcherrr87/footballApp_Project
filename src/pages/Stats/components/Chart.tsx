@@ -45,16 +45,18 @@ const getWeek = (date: Date): string => {
   return `${tempDate.getFullYear()}-W${weekNumber}`
 }
 
-const Chart = () => {
+export const Chart = () => {
   const { data: games, isLoading, error } = useGetCompetitionsQuery()
-  const [interval, setInterval] = useState<'day' | 'week' | 'month'>('day')
+  const [interval, setInterval] = useState<'dni' | 'tygodni' | 'miesięcy'>(
+    'dni',
+  )
 
-  if (isLoading) return <p>Loading...</p>
-  if (error) return <p>Failed to fetch data.</p>
+  if (isLoading) return <p>Ładowanie...</p>
+  if (error) return <p>Bład podczas pobierania danych</p>
 
   const groupGamesByInterval = (
     games: Game[],
-    interval: 'day' | 'week' | 'month',
+    interval: 'dni' | 'tygodni' | 'miesięcy',
   ) => {
     const groupedGames: Record<string, number> = {}
 
@@ -62,9 +64,9 @@ const Chart = () => {
       const gameDate = new Date(game.date)
       let key = ''
 
-      if (interval === 'day') {
+      if (interval === 'dni') {
         key = gameDate.toISOString().split('T')[0]
-      } else if (interval === 'week') {
+      } else if (interval === 'tygodni') {
         key = getWeek(gameDate)
       } else {
         key = `${gameDate.getFullYear()}-${gameDate.getMonth() + 1}`
@@ -82,7 +84,7 @@ const Chart = () => {
     labels: Object.keys(groupedGames),
     datasets: [
       {
-        label: `Number of Games (${interval})`,
+        label: `Liczba gier`,
         data: Object.values(groupedGames),
         backgroundColor: 'rgba(54, 162, 235, 0.6)',
         borderColor: 'rgba(54, 162, 235, 1)',
@@ -93,17 +95,15 @@ const Chart = () => {
 
   return (
     <StyledWrapper>
-      <Header level={2}>Games in {interval}</Header>
+      <Header level={2}>Gry według {interval}</Header>
 
       <StyledButtonWrapper>
-        <Button label="Day" onClick={() => setInterval('day')} />
-        <Button label="Week" onClick={() => setInterval('week')} />
-        <Button label="Month" onClick={() => setInterval('month')} />
+        <Button label="Dzień" onClick={() => setInterval('dni')} />
+        <Button label="Tydzień" onClick={() => setInterval('tygodni')} />
+        <Button label="Miesiąc" onClick={() => setInterval('miesięcy')} />
       </StyledButtonWrapper>
 
       <Bar data={chartData} />
     </StyledWrapper>
   )
 }
-
-export default Chart

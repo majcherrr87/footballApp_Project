@@ -18,13 +18,15 @@ export const Actions = () => {
     <div>
       <StyledWrapper>
         <Button
-          label={formToShow ? 'Cancel' : 'Add Competition'}
+          label={formToShow ? 'Anuluj' : 'Dodaj rozgrywkę'}
           variant="success"
           onClick={() => setFormToShow((prev) => !prev)}
         />
       </StyledWrapper>
 
-      {formToShow && <AddCompetitionForm />}
+      {formToShow && (
+        <AddCompetitionForm closeAddCompetition={() => setFormToShow(false)} />
+      )}
     </div>
   )
 }

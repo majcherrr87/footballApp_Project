@@ -10,8 +10,8 @@ interface LastGameProps {
 export const LastGame = ({ lastGame }: LastGameProps) => {
   const { data, isLoading, error } = useGetTeamsQuery()
 
-  if (isLoading) return <div>Loading...</div>
-  if (error) return <div>Error loading teams</div>
+  if (isLoading) return <div>Ładowanie...</div>
+  if (error) return <div>Błąd ładowania drużyny</div>
 
   const team1 = data?.find((team) => team.id === lastGame.team1Id)
   const team2 = data?.find((team) => team.id === lastGame.team2Id)
@@ -19,13 +19,14 @@ export const LastGame = ({ lastGame }: LastGameProps) => {
   return (
     <div>
       <Header level={3}>
-        Last game was between {team1?.name || 'Unknown Team'} and{' '}
-        {team2?.name || 'Unknown Team'}
+        {team1
+          ? `Ostatnia gra odbyła się pomiędzy ${team1.name} i ${team2?.name}`
+          : 'Nieznaleziono drużyn'}
       </Header>
       <Paragraph>
-        Game was on {lastGame.date}, in {lastGame.place}. After{' '}
-        {lastGame.duration} the result was {lastGame.score.team1}:
-        {lastGame.score.team2}
+        {team1
+          ? `Mecz odbył się ${lastGame.date}, w ${lastGame.place}. Po ${lastGame.duration} minutach z wynikiem ${lastGame.score.team1}:${lastGame.score.team2}`
+          : 'Brak szczegółów'}
       </Paragraph>
     </div>
   )

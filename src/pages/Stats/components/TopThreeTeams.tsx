@@ -1,6 +1,46 @@
 import { useMemo } from 'react'
 import { useGetCompetitionsQuery } from '../../../queries/useGetCompetitionsQuery'
 import { useGetTeamsQuery } from '../../../queries/useGetTeamsQuery'
+import styled from 'styled-components'
+
+const StyledUl = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 400px; /* Kontroluje szerokość listy */
+  margin: 1rem auto;
+
+  li {
+    margin-bottom: 12px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30px 1fr 60px;
+    align-items: center;
+    text-align: left;
+    background-color: #1e1d1d;
+    padding: 8px 12px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .rank {
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .team-name {
+    padding: 0 10px;
+  }
+
+  .goals {
+    text-align: right;
+    font-weight: bold;
+  }
+`
 
 export const TopThreeteams = () => {
   const {
@@ -41,20 +81,24 @@ export const TopThreeteams = () => {
       .slice(0, 3)
   }, [teamGoals])
 
-  if (isLoadingGames || isLoadingTeams) return <p>Loading...</p>
+  if (isLoadingGames || isLoadingTeams) return <p>Ładowanie...</p>
 
-  if (errorGames || errorTeams) return <p>Error loading data.</p>
+  if (errorGames || errorTeams) return <p>Błąd ładowanie danych</p>
 
   return (
     <div>
-      <h2>Top 3 Teams by Goals</h2>
-      <ul>
+      <h2>Najlepsze 3 drużyny wegług zdobytych goli</h2>
+      <StyledUl>
         {topTeams.map(([teamId, goals], index) => (
           <li key={teamId}>
-            {index + 1}. {teamNames?.[teamId] || 'Unknown Team'} - {goals} goals
+            <span className="rank">{index + 1}.</span>
+            <span className="team-name">
+              {teamNames?.[teamId] || 'Brak drużyny'}
+            </span>
+            <span className="goals">{goals} goli</span>
           </li>
         ))}
-      </ul>
+      </StyledUl>
     </div>
   )
 }

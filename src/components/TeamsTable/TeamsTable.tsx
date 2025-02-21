@@ -49,6 +49,15 @@ type TeamTableProps = {
   isEnableToDelete: (teamId: string) => boolean | undefined
 }
 
+const columns = [
+  'Drużyna',
+  'Rok założenia',
+  'Lokalizacja',
+  'Edytuj drużyne',
+  'Edytuj skłąd',
+  'Usuń drużyne',
+]
+
 export const TeamTable = ({
   teams,
   onEditTeam,
@@ -62,12 +71,9 @@ export const TeamTable = ({
       <StyledTable>
         <thead>
           <tr>
-            <StyledTableHeader>Team Name</StyledTableHeader>
-            <StyledTableHeader>Team Year of fundation</StyledTableHeader>
-            <StyledTableHeader>Team location</StyledTableHeader>
-            <StyledTableHeader>Edit team</StyledTableHeader>
-            <StyledTableHeader>Edit roaster</StyledTableHeader>
-            <StyledTableHeader>Delete team</StyledTableHeader>
+            {columns.map((column) => (
+              <StyledTableHeader key={column}>{column}</StyledTableHeader>
+            ))}
           </tr>
         </thead>
         <tbody>
@@ -79,7 +85,7 @@ export const TeamTable = ({
                 <StyledTableData>{team.location}</StyledTableData>
                 <StyledTableData>
                   <Button
-                    label="Edit"
+                    label="Edytuj"
                     variant="warning"
                     onClick={() => onEditTeam(team)}
                     isLoading={isLoading}
@@ -87,7 +93,7 @@ export const TeamTable = ({
                 </StyledTableData>
                 <StyledTableData>
                   <Button
-                    label="Edit roaster"
+                    label="Edytuj skłąd"
                     variant="warning"
                     onClick={() => onEditRoster(team)}
                     isLoading={isLoading}
@@ -96,8 +102,10 @@ export const TeamTable = ({
                 <StyledTableData>
                   <Button
                     variant="danger"
-                    label="Delete"
-                    tooltip={isEnableToDelete(team.id) ? 'Cant be deleted' : ''}
+                    label="Usuń"
+                    tooltip={
+                      isEnableToDelete(team.id) ? 'Nie można usunąć' : ''
+                    }
                     isDisabled={!!isEnableToDelete(team.id)}
                     onClick={() => onDelete(team.id)}
                     isLoading={isLoading}

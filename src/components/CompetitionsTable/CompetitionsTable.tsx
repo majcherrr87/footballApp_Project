@@ -53,6 +53,17 @@ type CompetitionTableProps = {
   onEditCompetition: (game: Game) => void
 }
 
+const columns = [
+  'Rozgrywka',
+  'Data',
+  'Miejsce',
+  'Czas',
+  'Wynik',
+  'Drużyna 1',
+  'Drużyna 2',
+  'Edytuj rozgrywke',
+]
+
 export const CompetitionTable = ({
   competitions,
   isLoading,
@@ -63,14 +74,11 @@ export const CompetitionTable = ({
     <StyledWrapper>
       <StyledTable>
         <thead>
-          <StyledTableHeader>Game Name</StyledTableHeader>
-          <StyledTableHeader>Date</StyledTableHeader>
-          <StyledTableHeader>Place</StyledTableHeader>
-          <StyledTableHeader>Duration</StyledTableHeader>
-          <StyledTableHeader>Result</StyledTableHeader>
-          <StyledTableHeader>Team 1</StyledTableHeader>
-          <StyledTableHeader>Team 2</StyledTableHeader>
-          <StyledTableHeader>Edit competition</StyledTableHeader>
+          <tr>
+            {columns.map((column, index) => (
+              <StyledTableHeader key={index}>{column}</StyledTableHeader>
+            ))}
+          </tr>
         </thead>
         <tbody>
           {competitions.map((competition) => {
@@ -91,7 +99,7 @@ export const CompetitionTable = ({
                 </StyledTableData>
                 <StyledTableData>
                   <Button
-                    label="Edit competition"
+                    label="Edytuj rozgrywke"
                     variant="warning"
                     onClick={() => onEditCompetition(competition)}
                     isLoading={isLoading}

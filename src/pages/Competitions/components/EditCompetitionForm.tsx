@@ -115,16 +115,16 @@ export const EditCompetitionForm = ({
 
   const validateFields = () => {
     const newErrors = {
-      title: value.title.trim() === '' ? 'Title is required' : '',
-      date: value.date.trim() === '' ? 'Date is required' : '',
-      place: value.place.trim() === '' ? 'Place is required' : '',
-      duration: value.duration <= 0 ? 'Duration must be positive' : '',
+      title: value.title.trim() === '' ? 'Nazwa jest wymagana' : '',
+      date: value.date.trim() === '' ? 'Data jest wymagana' : '',
+      place: value.place.trim() === '' ? 'Miejsce jest wymagane' : '',
+      duration: value.duration <= 0 ? 'Czas musi być na plusie' : '',
       score:
         value.score.team1 < 0 || value.score.team2 < 0
-          ? 'Scores must be non-negative'
+          ? 'Czas musi być na plusie'
           : '',
-      team1Id: value.team1Id === '' ? 'Team 1 is required' : '',
-      team2Id: value.team2Id === '' ? 'Team 2 is required' : '',
+      team1Id: value.team1Id === '' ? 'Drużyna 1 jest wymagana' : '',
+      team2Id: value.team2Id === '' ? 'Drużyna 2 jest wymagana' : '',
     }
 
     setErrors(newErrors)
@@ -157,26 +157,76 @@ export const EditCompetitionForm = ({
     onClose()
   }
 
-  if (isPending || isTeamsLoading) return <p>Loading...</p>
-  if (error || errorTeams) return <p>Error</p>
+  if (isPending || isTeamsLoading) return <p>Ładowanie...</p>
+  if (error || errorTeams) return <p>Błąd</p>
 
   return (
     <ModalOverlay>
       <ModalContent>
-        <h3>Edit competition</h3>
+        <h3>Edytuj rozgrywkę</h3>
 
         <FormWrapper onSubmit={handleSubmit}>
-          <Label htmlFor="title">Title of competition</Label>
-          <Input
-            type="text"
-            id="title"
-            name="title"
-            value={value.title}
-            onChange={handleChange}
-          />
-          {errors.title && <p style={{ color: 'red' }}>{errors.title}</p>}
+          <Label htmlFor="team1">Drużyna 1</Label>
+          <Select
+            id="team1"
+            name="team1Id"
+            value={value.team1Id}
+            onChange={(e) => {
+              const team1Id = e.target.value
+              const team1 = teams?.find((team) => team.id === team1Id)
+              const team2 = teams?.find((team) => team.id === value.team2Id)
 
-          <Label htmlFor="date">Date of competition</Label>
+              setValue({
+                ...value,
+                team1Id: team1Id,
+                title:
+                  team1 && team2
+                    ? `${team1.name} vs ${team2.name}`
+                    : team1
+                      ? `${team1.name} vs`
+                      : '',
+              })
+            }}
+          >
+            <option value="">Wybierz drużyne</option>
+            {teams?.map((team) => (
+              <option key={team.id} value={team.id}>
+                {team.name}
+              </option>
+            ))}
+          </Select>
+
+          <Label htmlFor="team2">Drużyna 2</Label>
+          <Select
+            id="team2"
+            name="team2Id"
+            value={value.team2Id}
+            onChange={(e) => {
+              const team2Id = e.target.value
+              const team1 = teams?.find((team) => team.id === value.team1Id)
+              const team2 = teams?.find((team) => team.id === team2Id)
+
+              setValue({
+                ...value,
+                team2Id: team2Id,
+                title:
+                  team1 && team2
+                    ? `${team1.name} vs ${team2.name}`
+                    : team1
+                      ? `${team1.name} vs`
+                      : '',
+              })
+            }}
+          >
+            <option value="">Wybierz drużyne</option>
+            {teams?.map((team) => (
+              <option key={team.id} value={team.id}>
+                {team.name}
+              </option>
+            ))}
+          </Select>
+
+          <Label htmlFor="date">Data rozgrywki</Label>
           <Input
             type="date"
             id="date"
@@ -186,7 +236,7 @@ export const EditCompetitionForm = ({
           />
           {errors.date && <p style={{ color: 'red' }}>{errors.date}</p>}
 
-          <Label htmlFor="place">Place of competition</Label>
+          <Label htmlFor="place">Miejsce rozgrywki</Label>
           <Input
             type="text"
             id="place"
@@ -196,7 +246,7 @@ export const EditCompetitionForm = ({
           />
           {errors.place && <p style={{ color: 'red' }}>{errors.place}</p>}
 
-          <Label htmlFor="duration">Duration (minutes)</Label>
+          <Label htmlFor="duration">Czas (w minutach)</Label>
           <Input
             type="number"
             id="duration"
@@ -206,58 +256,60 @@ export const EditCompetitionForm = ({
           />
           {errors.duration && <p style={{ color: 'red' }}>{errors.duration}</p>}
 
-          <Label htmlFor="team1">Score Team 1</Label>
-          <Input
-            type="number"
-            id="team1"
-            name="score.team1Score"
-            value={value.score.team1}
-            onChange={handleChange}
-          />
-          {errors.score && <p style={{ color: 'red' }}>{errors.score}</p>}
+          <span>Wynik</span>
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <div style={{ width: '50%' }}>
+              <Label htmlFor="score-team1">
+                {value.team1Id
+                  ? teams?.find((team) => team.id === value.team1Id)?.name ||
+                    'Liczba goli'
+                  : 'Liczba goli'}
+              </Label>
+              <Input
+                type="number"
+                id="score-team1"
+                value={value.score.team1}
+                onChange={(e) =>
+                  setValue({
+                    ...value,
+                    score: {
+                      ...value.score,
+                      team1: Number(e.target.value),
+                    },
+                  })
+                }
+              />
+              {errors.score && <p style={{ color: 'red' }}>{errors.score}</p>}
+            </div>
 
-          <Label htmlFor="team2Score">Score Team 2</Label>
-          <Input
-            type="number"
-            id="team2"
-            name="score.team2"
-            value={value.score.team2}
-            onChange={handleChange}
-          />
-
-          <Label htmlFor="team1">Team 1</Label>
-          <Select
-            id="team1"
-            name="team1Id"
-            value={value.team1Id}
-            onChange={handleChange}
-          >
-            <option value="">Select Team</option>
-            {teams?.map((team) => (
-              <option key={team.id} value={team.id}>
-                {team.name}
-              </option>
-            ))}
-          </Select>
-
-          <Label htmlFor="team2">Team 2</Label>
-          <Select
-            id="team2"
-            name="team2Id"
-            value={value.team2Id}
-            onChange={handleChange}
-          >
-            <option value="">Select Team</option>
-            {teams?.map((team) => (
-              <option key={team.id} value={team.id}>
-                {team.name}
-              </option>
-            ))}
-          </Select>
+            <div style={{ width: '50%' }}>
+              <Label htmlFor="score-team2">
+                {value.team2Id
+                  ? teams?.find((team) => team.id === value.team2Id)?.name ||
+                    'Liczba goli'
+                  : 'Liczba goli'}
+              </Label>
+              <Input
+                type="number"
+                id="score-team2"
+                value={value.score.team2}
+                onChange={(e) =>
+                  setValue({
+                    ...value,
+                    score: {
+                      ...value.score,
+                      team2: Number(e.target.value),
+                    },
+                  })
+                }
+              />
+              {errors.score && <p style={{ color: 'red' }}>{errors.score}</p>}
+            </div>
+          </div>
 
           <StyledButtonWrapper>
-            <Button label="Edit Competition" variant="success" />
-            <Button label="Cancel" variant="danger" onClick={onClose} />
+            <Button label="Edytuj rozgrywke" variant="success" />
+            <Button label="Anuluj" variant="danger" onClick={onClose} />
           </StyledButtonWrapper>
         </FormWrapper>
       </ModalContent>

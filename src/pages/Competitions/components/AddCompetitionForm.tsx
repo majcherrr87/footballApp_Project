@@ -48,8 +48,13 @@ const StyledButtonWrapper = styled.div`
   width: 100%;
   margin-top: 15px;
 `
+type AddCompetitionFormProps = {
+  closeAddCompetition: () => void
+}
 
-export const AddCompetitionForm = () => {
+export const AddCompetitionForm = ({
+  closeAddCompetition,
+}: AddCompetitionFormProps) => {
   const [value, setValue] = useState<{
     title: string
     date: string
@@ -92,22 +97,23 @@ export const AddCompetitionForm = () => {
 
   const validateFields = () => {
     const newErrors = {
-      title: value.title.trim() === '' ? 'Title is required' : '',
-      date: value.date.trim() === '' ? 'Date is required' : '',
-      place: value.place.trim() === '' ? 'Place is required' : '',
-      duration: value.duration <= 0 ? 'Duration must be positive' : '',
+      title: value.title.trim() === '' ? 'Tytył jest wymagany' : '',
+      date: value.date.trim() === '' ? 'Data jest wymagana' : '',
+      place:
+        value.place.trim() === '' ? 'Lokalizacja rozgrywki jest wymagana' : '',
+      duration: value.duration <= 0 ? 'Czas trwania jest wymagany' : '',
       score: {
         team1:
           value.score.team1 === undefined || value.score.team1 < 0
-            ? 'Score must be 0 or greater'
+            ? 'Wynik musi być równy lub większy od 0'
             : '',
         team2:
           value.score.team2 === undefined || value.score.team2 < 0
-            ? 'Score must be 0 or greater'
+            ? 'Wynik musi być równy lub większy od 0'
             : '',
       },
-      team1Id: value.team1Id === '' ? 'Team 1 is required' : '',
-      team2Id: value.team2Id === '' ? 'Team 2 is required' : '',
+      team1Id: value.team1Id === '' ? 'Drużyna 1 jest wymagana' : '',
+      team2Id: value.team2Id === '' ? 'Drużyna 2 jest wymagana' : '',
     }
 
     setErrors(newErrors)
@@ -133,25 +139,77 @@ export const AddCompetitionForm = () => {
           team2: value.score.team2 ?? 0,
         },
       })
+      closeAddCompetition()
     }
   }
 
-  if (isPending) return <p>Loading...</p>
+  if (isPending) return <p>Ładowanie...</p>
 
-  if (error) return <p>Error</p>
+  if (error) return <p>Błąd</p>
 
   return (
     <FormWrapper onSubmit={onSubmit}>
-      <Label htmlFor="title">Title of competition</Label>
-      <Input
-        type="text"
-        id="title"
-        value={value.title}
-        onChange={(e) => setValue({ ...value, title: e.target.value })}
-      />
-      {errors.title && <p style={{ color: 'red' }}>{errors.title}</p>}
+      <Label htmlFor="team1">Drużyna 1</Label>
+      <Select
+        id="team1"
+        value={value.team1Id}
+        onChange={(e) => {
+          const team1Id = e.target.value
+          const team1 = teams?.find((team) => team.id === team1Id)
+          const team2 = teams?.find((team) => team.id === value.team2Id)
 
-      <Label htmlFor="date">Date of competition</Label>
+          setValue({
+            ...value,
+            team1Id: team1Id,
+            title:
+              team1 && team2
+                ? `${team1.name} vs ${team2.name}`
+                : team1
+                  ? `${team1.name} vs`
+                  : '',
+          })
+        }}
+      >
+        <option value="">Wybierz drużyne</option>
+        {teams?.map((team) => (
+          <option key={team.id} value={team.id}>
+            {team.name}
+          </option>
+        ))}
+      </Select>
+      {errors.team1Id && <p style={{ color: 'red' }}>{errors.team1Id}</p>}
+
+      <Label htmlFor="team2">Drużyna 2</Label>
+      <Select
+        id="team2"
+        value={value.team2Id}
+        onChange={(e) => {
+          const team2Id = e.target.value
+          const team1 = teams?.find((team) => team.id === value.team1Id)
+          const team2 = teams?.find((team) => team.id === team2Id)
+
+          setValue({
+            ...value,
+            team2Id: team2Id,
+            title:
+              team1 && team2
+                ? `${team1.name} vs ${team2.name}`
+                : team1
+                  ? `${team1.name} vs`
+                  : '',
+          })
+        }}
+      >
+        <option value="">Wybierz drużyne</option>
+        {teams?.map((team) => (
+          <option key={team.id} value={team.id}>
+            {team.name}
+          </option>
+        ))}
+      </Select>
+      {errors.team2Id && <p style={{ color: 'red' }}>{errors.team2Id}</p>}
+
+      <Label htmlFor="date">Data rozdrywki</Label>
       <Input
         type="date"
         id="date"
@@ -160,7 +218,7 @@ export const AddCompetitionForm = () => {
       />
       {errors.date && <p style={{ color: 'red' }}>{errors.date}</p>}
 
-      <Label htmlFor="place">Place of competition</Label>
+      <Label htmlFor="place">Miejsce rozgrywki</Label>
       <Input
         type="text"
         id="place"
@@ -169,7 +227,7 @@ export const AddCompetitionForm = () => {
       />
       {errors.place && <p style={{ color: 'red' }}>{errors.place}</p>}
 
-      <Label htmlFor="duration">Duration (minutes)</Label>
+      <Label htmlFor="duration">Czas (w minutach)</Label>
       <Input
         type="number"
         id="duration"
@@ -180,10 +238,15 @@ export const AddCompetitionForm = () => {
       />
       {errors.duration && <p style={{ color: 'red' }}>{errors.duration}</p>}
 
-      <Label>Score</Label>
+      <span>Wynik</span>
       <div style={{ display: 'flex', gap: '10px' }}>
-        <div>
-          <Label htmlFor="score-team1">Team 1 Score</Label>
+        <div style={{ width: '50%' }}>
+          <Label htmlFor="score-team1">
+            {value.team1Id
+              ? teams?.find((team) => team.id === value.team1Id)?.name ||
+                'Liczba goli'
+              : 'Liczba goli'}
+          </Label>
           <Input
             type="number"
             id="score-team1"
@@ -203,8 +266,13 @@ export const AddCompetitionForm = () => {
           )}
         </div>
 
-        <div>
-          <Label htmlFor="score-team2">Team 2 Score</Label>
+        <div style={{ width: '50%' }}>
+          <Label htmlFor="score-team2">
+            {value.team2Id
+              ? teams?.find((team) => team.id === value.team2Id)?.name ||
+                'Liczba goli'
+              : 'Liczba goli'}
+          </Label>
           <Input
             type="number"
             id="score-team2"
@@ -225,38 +293,8 @@ export const AddCompetitionForm = () => {
         </div>
       </div>
 
-      <Label htmlFor="team1">Team 1</Label>
-      <Select
-        id="team1"
-        value={value.team1Id}
-        onChange={(e) => setValue({ ...value, team1Id: e.target.value })}
-      >
-        <option value="">Select Team</option>
-        {teams?.map((team) => (
-          <option key={team.id} value={team.id}>
-            {team.name}
-          </option>
-        ))}
-      </Select>
-      {errors.team1Id && <p style={{ color: 'red' }}>{errors.team1Id}</p>}
-
-      <Label htmlFor="team2">Team 2</Label>
-      <Select
-        id="team2"
-        value={value.team2Id}
-        onChange={(e) => setValue({ ...value, team2Id: e.target.value })}
-      >
-        <option value="">Select Team</option>
-        {teams?.map((team) => (
-          <option key={team.id} value={team.id}>
-            {team.name}
-          </option>
-        ))}
-      </Select>
-      {errors.team2Id && <p style={{ color: 'red' }}>{errors.team2Id}</p>}
-
       <StyledButtonWrapper>
-        <Button label="Add Competition" variant="success" />
+        <Button label="Dodaj rozgrywke" variant="success" />
       </StyledButtonWrapper>
     </FormWrapper>
   )
